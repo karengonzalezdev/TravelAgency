@@ -84,7 +84,7 @@ NgModule({
 })
 
 export const AppRoutingModule = RouterModule.forRoot(routes, {
-    useHash: true,
+    useHash: false,
     onSameUrlNavigation: 'reload'
 });
 
