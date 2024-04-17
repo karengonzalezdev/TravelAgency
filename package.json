@@ -9,6 +9,7 @@
         "test": "ng test"
     },
     "private": true,
+    "homepage": "https://karenfggutierrez.github.io/TravelAgency/",
     "dependencies": {
         "@angular/animations": "^14.2.12",
         "@angular/cdk": "^13.0.0",
