@@ -1,0 +1,42 @@
+<h2 class="subtitulo">RESERVACIONES</h2>
+<input #BuscarCampo id="BuscarCampo" name="BuscarCampo" class="inputBuscar" placeholder="Ingresa origen/destino/hotel/aerolinea">
+<button class="btn btn-primary tamañoBoton" (click)="buscarOrigen(BuscarCampo.value)">Buscar</button>
+<button class="btn btn-info botonPorCampo" (click)="redireccionar()">Buscar Por Campo</button>
+<button class="btn btn-info botonAgregar" (click)="redireccionarAgregar()">Agregar Reserva</button>
+<br>
+<br>
+<table class="table table-striped">
+    <thead class="table-dark">
+        <tr>
+            <th>Nombre</th>
+            <th>Apellido Paterno</th>
+            <th>Apellido Materno</th>
+            <th>Descripcion</th>
+            <th>Fecha de creacion</th>
+            <th>Origen</th>
+            <th>Destino</th>
+            <th>Opciones</th>
+            <th></th>
+
+        </tr>
+
+    </thead>
+    <tbody>
+        <tr *ngFor="let rservations of reservations| paginate: { itemsPerPage: 6, currentPage: p, totalItems: total }">
+            <td>{{rservations.name}}</td>
+            <td>{{rservations.lastNameDad}}</td>
+            <td>{{rservations.lastNameMom}}</td>
+            <td>{{rservations.description}}</td>
+            <td>{{rservations.createDate | date: 'short'}}</td>
+            <td>{{rservations.flight.fkIdCitieOrigin.name}}</td>
+            <td>{{rservations.flight.fkIdCitieDestination.name}}</td>
+            <td><button class="btn btn-info" (click)="actualizar(rservations.idReservation, rservations.room.idRoom)">Modificar</button></td>
+            <td><button (click)="eliminarReserva(rservations.idReservation, rservations.room.idRoom)" class="btn btn-danger" style="margin-left: 10px;">Eliminar</button></td>
+        </tr>
+
+    </tbody>
+</table>
+<pagination-controls (pageChange)="pageChangeEvent($event)"></pagination-controls>
+<script>
+    console.log(nombre);
+</script>

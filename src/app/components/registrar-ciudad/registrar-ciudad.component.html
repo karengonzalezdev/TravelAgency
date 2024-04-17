@@ -1,0 +1,24 @@
+
+<div class="col-md-6 offset-md-3">
+    <h3 class="text-center">REGISTRO DE CIUDAD</h3>
+    <form (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <label>Nombre</label>
+            <input type="text" class="form-control" id="name" [(ngModel)]="ciudad.name" name="name">
+        </div>
+        <br>
+        <div class="form-group">
+            <label>Continente</label>
+            <select class="form-control" name="continen_name" id="continen_name" [(ngModel)]="ciudad.continen_name">
+                <option>AMÉRICA</option>
+                <option>ASIA</option>
+                <option>ÁFRICA</option>
+                <option>EUROPA</option>
+                <option>OCEANÍA</option>
+            </select>
+        </div>
+        <br>
+        <button class="btn btn-danger" (click)="irAlistaCiudades()">Cancelar</button>
+        <button class="btn btn-success">Guardar</button>
+    </form>
+</div>

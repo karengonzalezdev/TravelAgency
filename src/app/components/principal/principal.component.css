@@ -1,0 +1,34 @@
+h1 {
+    text-shadow: 1px 5px 5px brown;
+    text-align: center;
+}
+
+p {
+    color: black;
+}
+
+.Parrafos {
+    margin-top: 60px;
+    display: flex;
+    flex-direction: row;
+}
+
+.card1 {
+    margin-left: 40px;
+    color: rgb(3, 3, 3);
+}
+
+.card2 {
+    margin-left: 40px;
+    color: rgb(3, 3, 3);
+}
+
+.card3 {
+    margin-left: 40px;
+    color: rgb(3, 3, 3);
+}
+
+.card4 {
+    margin-left: 40px;
+    color: rgb(3, 3, 3);
+}

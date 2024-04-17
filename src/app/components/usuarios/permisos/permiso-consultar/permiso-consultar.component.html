@@ -1,0 +1,25 @@
+<h2 class="subtitulo">PERMISOS</h2>
+<br>
+<br>
+<table class="table table-striped">
+    <thead class="table-dark">
+        <tr>
+            <th scope="col">#</th>
+            <th>Descripsion</th>
+            <th>Nodo</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let perm of permiso | paginate: { itemsPerPage: 6, currentPage: p, totalItems: total }">
+            <td>{{perm.idPermission}}</td>
+            <td>{{perm.description}}</td>
+            <td>{{perm.nodo}}</td>
+            <td><button (click)="irAeditarPermiso(perm.idPermission)" class="btn btn-info">Modificar</button><button (click)="eliminarPermiso(perm.idPermission)" class="btn btn-danger" style="margin-left: 10px;">Eliminar</button></td>
+        </tr>
+    </tbody>
+</table>
+<pagination-controls (pageChange)="pageChangeEvent($event)"></pagination-controls>
+<script>
+    console.log(nombre);
+</script>

@@ -1,0 +1,26 @@
+<table class="table table-striped">
+    <thead class="table-dark">
+        <tr>
+            <th>Nombre</th>
+            <th>Apellido Paterno</th>
+            <th>Apellido Materno</th>
+            <th>Descripcion</th>
+            <th>Fecha de creacion</th>
+            <th>Origen</th>
+            <th>Destino</th>
+            <th>Opciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let rservations of reservations">
+            <td>{{rservations.name}}</td>
+            <td>{{rservations.lastNameDad}}</td>
+            <td>{{rservations.lastNameMom}}</td>
+            <td>{{rservations.description}}</td>
+            <td>{{rservations.createDate}}</td>
+            <td>{{rservations.flight.fkIdCitieOrigin.name}}</td>
+            <td>{{rservations.flight.fkIdCitieDestination.name}}</td>
+            <td><button class="btn btn-info">Actualizar</button><button (click)="eliminarReserva(rservations.idReservation)" class="btn btn-warning" style="margin-left: 10px;">Eliminar</button>
+        </tr>
+    </tbody>
+</table>

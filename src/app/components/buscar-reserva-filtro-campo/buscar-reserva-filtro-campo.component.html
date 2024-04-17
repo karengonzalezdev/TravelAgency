@@ -1,0 +1,77 @@
+<h2 class="subtitulo">RESERVACIONES</h2>
+
+<form class="d-flex" role="search">
+  <input #BuscarCampo id="BuscarCampo" name="BuscarCampo" class="inputBuscar" >
+  <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+
+      <div class="btn-group" role="group">
+          <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+          Buscar por
+        </button>
+          <ul class="dropdown-menu">
+              <li><a (click)="buscarOrigenCampo(BuscarCampo.value)"  class="dropdown-item">Origen</a></li>
+              <li><a (click)="buscarDestino(BuscarCampo.value)" class="dropdown-item">Destino</a></li>
+              <li><a (click)="buscarHotel(BuscarCampo.value)" class="dropdown-item">Hotel</a></li>
+              <li><a (click)="buscarAerolinea(BuscarCampo.value)" class="dropdown-item">Aerolínea</a></li>
+          </ul>
+      </div>
+  </div>
+</form>
+<br>
+
+<!---<button (click)="buscarDestino(inputBuscarCampo.value)">Buscar por Origen</button> <--->
+<table class="table table-striped">
+    <thead class="table-dark">
+        <tr>
+            <th>Nombre</th>
+            <th>Apellido Paterno</th>
+            <th>Apellido Materno</th>
+            <th>Descripcion</th>
+            <th>Fecha de creacion</th>
+            <th>Origen</th>
+            <th>Destino</th>
+            <th>Opciones</th>
+            <th></th>
+        </tr>
+
+    </thead>
+    <tbody >
+        <tr *ngFor= "let rservations of reservations| paginate: { itemsPerPage: 6, currentPage: p, totalItems: total }">
+            <td>{{rservations.name}}</td>
+            <td >{{rservations.lastNameDad}}</td>
+            <td >{{rservations.lastNameMom}}</td>
+            <td >{{rservations.description}}</td>
+            <td >{{rservations.createDate | date: 'short'}}</td>
+            <td >{{rservations.flight.fkIdCitieOrigin.name}}</td>
+            <td >{{rservations.flight.fkIdCitieDestination.name}}</td>
+            <td><button (click)="actualizar(rservations.idReservation)" class="btn btn-info">Actualizar</button></td>
+            <td><button (click)="eliminarReserva(rservations.idReservation)" class="btn btn-danger" style="margin-left: 10px;">Eliminar</button></td>
+        </tr>
+
+    </tbody>
+</table>
+<pagination-controls (pageChange)="pageChangeEvent($event)"></pagination-controls>
+  <style>
+    h2{
+        text-align: center;
+        margin-top: 20px;
+        text-shadow: 2px 0px 10px brown;
+    }
+    .divChecks{
+        margin-top: 30px;
+        display: flex;
+        flex-direction: row;
+    }
+    .form-check{
+        margin-left: 30px;
+    }
+    #inputBuscarCampo{
+        width: 25%;
+        margin-top: 15px;
+        margin-bottom: 20px;
+        margin-left: 30px;
+    }
+    td{
+        color: white;
+    }
+  </style>

@@ -1,0 +1,74 @@
+<div class="col-md-6 offset-md-3 card-header">
+    <h3 class="text-center">Actualizar Reservacion</h3>
+    <form (ngSubmit)="onSubmit()" #reservaForm="ngForm">
+        <div class="form-group">
+            <label>Nombre</label>
+            <input type="text" class="form-control" id="name" [(ngModel)]="prueba.name" name="name" placeholder="Ingresa un nombre maximo de 50 caracteres" required minlength="1" maxlength="50" #name="ngModel">
+            <div class="alert alert-danger" *ngIf="name.invalid && (name.dirty || name.touched)">
+                <div *ngIf="name.errors.required">
+                    El nombre es requerido
+                </div>
+            </div>
+
+            <label>Apellido Paterno</label>
+            <input type="text" class="form-control" id="lastNameDad" [(ngModel)]="prueba.lastNameDad" name="lastNameDad" placeholder="Ingresa un apellido maximo de 50 caracteres" required minlength="1" maxlength="50" #lastNameDad="ngModel">
+            <div class="alert alert-danger" *ngIf="lastNameDad.invalid && (lastNameDad.dirty || lastNameDad.touched)">
+                <div *ngIf="lastNameDad.errors.required">
+                    El apellido es requerido
+                </div>
+            </div>
+
+            <label>Apellido Materno</label>
+            <input type="text" class="form-control" id="lastNameMom" [(ngModel)]="prueba.lastNameMom" name="lastNameMom" placeholder="Ingresa un apellido maximo de 50 caracteres" required minlength="1" maxlength="50" #lastNameMom="ngModel">
+            <div class="alert alert-danger" *ngIf="lastNameMom.invalid && (lastNameMom.dirty || lastNameMom.touched)">
+                <div *ngIf="lastNameMom.errors.required">
+                    El apellido es requerido
+                </div>
+            </div>
+
+            <label>Descripcion</label>
+            <input type="text" class="form-control" id="description" [(ngModel)]="prueba.description" name="description" placeholder="Ingresa una description maximo de 50 caracteres" required minlength="1" maxlength="50" #description="ngModel">
+            <div class="alert alert-danger" *ngIf="description.invalid && (description.dirty || description.touched)">
+                <div *ngIf="description.errors.required">
+                    La descripcion es requerida
+                </div>
+            </div>
+
+            <!--
+               <label>Fecha de Inicio</label>
+            <input type="text" class="form-control" id="startDate" [(ngModel)]="prueba.startDate" name="startDate">
+            <label>Fecha fin</label>
+            <input type="text" class="form-control" id="endDate" [(ngModel)]="prueba.endDate" name="endDate">
+            -->
+            <label>Fecha de inicio</label>
+            <input type="datetime-local" class="form-control" id="startDate" [(ngModel)]="prueba.startDate" [min]="fecha|date: 'yyyy-MM-dd hh:mm'" name="startDate"  required>
+            <label>Fecha de fin</label>
+            <input type="datetime-local"  class="form-control" id="endDate" [(ngModel)]="prueba.endDate" [min]="fecha|date: 'yyyy-MM-dd hh:mm'" name="endDate" required>
+            <label>Seleccione Habitacion</label>
+            <select class="form-control" name="category_id" id="category_id" [(ngModel)]="prueba2.idRoom">
+                <ng-container *ngFor="let prueba of cuartos"><option *ngIf="prueba.status == 1" [value]="prueba.idRoom">{{"Nombre Cuarto: "+ prueba.nameRoom + "   |   Descripcion: " + prueba.description + "  |  Hotel:  " + prueba.idHotel.nameHotel}}</option></ng-container>
+            </select>
+            
+            <label>Seleccione vuelo</label>
+            <select class="form-control" name="vuelo" id="vuelo" [(ngModel)]="prueba3.idFlight">
+
+                <ng-container *ngFor="let pruebaVuelo of vuelos"><option *ngIf="pruebaVuelo.status == 1" [value]="pruebaVuelo.idFlight"  >{{"Codigo de vuelo : " + pruebaVuelo.code + " | Ciudad de Origen: " + pruebaVuelo.fkIdCitieOrigin.name + "   |   Ciudad de destino: " + pruebaVuelo.fkIdCitieDestination.name}}</option></ng-container>
+            </select> 
+            <label>Seleccione Usuario</label>
+            <select class="form-control" name="vuelo" id="vuelo" [(ngModel)]="prueba4.idUser">
+                <ng-container *ngFor="let usuario of listaUsuario"><option [value]="usuario.idUser" >{{"Nombre de usurio : " + usuario.name}}</option></ng-container>
+                
+            </select>
+            
+            <!--
+                 <label>Usuario</label>
+            <input type="number" class="form-control" id="idUser" [(ngModel)]="prueba4.idUser" name="idUser">
+            -->
+        </div>
+
+    </form>
+    <br>
+
+    <button  class="btn btn-success" [disabled]="!reservaForm.form.valid" (click)="actualizar()">Guardar</button> <button class="btn btn-danger" (click)="cancelar(prueba.room.idRoom)" style="margin-left: 10px;">Cancelar</button>
+
+</div>

@@ -1,0 +1,29 @@
+h2{
+    text-align: center;
+    margin-top: 20px;
+    text-shadow: 2px 0px 10px brown;
+}
+
+td {
+    color: white;
+    text-align: center;
+}
+
+.tabla-acciones{
+    text-align: center;
+}
+
+.tamañoBoton {
+    margin-bottom: 5px;
+    text-align: center;
+    margin-left: 10px;
+}
+
+#BuscarCampo {
+    width: 25%;
+}
+
+.botonPorCampo {
+    margin-left: 45%;
+    margin-top: 10px;
+}

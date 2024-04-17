@@ -1,0 +1,19 @@
+<div class="col-md-6 offset-md-3 card-header">
+    <h3 class="text-center">Editar Permiso</h3>
+    <form (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <label>Permiso</label>
+            <input type="text" class="form-control" id="permisos" [(ngModel)]="permisos.description" name="descripcion">
+        </div>
+        <br>
+        <div class="form-group">
+            <label>Nodo</label>
+            <input type="text" class="form-control" id="permisos" [(ngModel)]="permisos.nodo" name="nodo">
+        </div>
+        <br>
+        <button class="btn btn-success">Guardar</button><button class="btn btn-danger" (click)="iraPermisos()" style="margin-left: 10px;">Cancelar</button>
+    </form>
+</div>
+<script>
+    console.log(nombre);
+</script>

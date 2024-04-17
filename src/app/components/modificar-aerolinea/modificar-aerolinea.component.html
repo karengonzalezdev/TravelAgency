@@ -1,0 +1,19 @@
+<div class="col-md-6 offset-md-3">
+    <h3 class="text-center">ACTUALIZAR AEROLÍNEA</h3>
+    <form (ngSubmit)="onSubmit()" #aeroForm="ngForm">
+        <div class="form-group">
+
+            <label>Nombre</label>
+            <input type="text" class="form-control" id="name" [(ngModel)]="aerolinea2.name" name="name" placeholder="Ingresa un nombre maximo de 50 caracteres" required minlength="1" maxlength="50" #name="ngModel">
+            <div class="alert alert-danger" *ngIf="name.invalid && (name.dirty || name.touched)">
+                <div *ngIf="name.errors.required">
+                    El nombre es requerido
+                </div>
+            </div>
+
+        </div>
+        <br>
+        <button class="btn btn-success" [disabled]="!aeroForm.form.valid">Guardar</button>
+        <button class="btn btn-danger" (click)="irAListaGeneral()" style="margin-left: 10px;">Cancelar</button>
+    </form>
+</div>

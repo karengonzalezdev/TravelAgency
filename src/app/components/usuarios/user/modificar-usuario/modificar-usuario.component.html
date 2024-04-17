@@ -1,0 +1,48 @@
+<div class="col-md-6 offset-md-3 card-header">
+    <h3 class="text-center">Edicion de Usuario</h3>
+    <form (ngSubmit)="onSubmit()" #userForm="ngForm">
+        <div class="form-group">
+
+            <label>Nombre</label>
+            <input type="text" class="form-control" id="name" [(ngModel)]="usuario.name" name="name" placeholder="Ingresa un nombre maximo de 50 caracteres" required minlength="1" maxlength="50" #name="ngModel">
+            <div class="alert alert-danger" *ngIf="name.invalid && (name.dirty || name.touched)">
+                <div *ngIf="name.errors.required">
+                    El nombre es requerido
+                </div>
+            </div>
+
+            <label>Apellido Paterno</label>
+            <input type="text" class="form-control" id="lastnameDad" [(ngModel)]="usuario.lastnameDad" name="lastnameDad" placeholder="Ingresa un apellido maximo de 50 caracteres" required minlength="1" maxlength="50" #lastnameDad="ngModel">
+            <div class="alert alert-danger" *ngIf="lastnameDad.invalid && (lastnameDad.dirty || lastnameDad.touched)">
+                <div *ngIf="lastnameDad.errors.required">
+                    El apellido es requerido
+                </div>
+            </div>
+
+            <label>Apellido Materno</label>
+            <input type="text" class="form-control" id="lastnameMom" [(ngModel)]="usuario.lastnameMom" name="lastnameMom" placeholder="Ingresa un apellido maximo de 50 caracteres" required minlength="1" maxlength="50" #lastnameMom="ngModel">
+            <div class="alert alert-danger" *ngIf="lastnameMom.invalid && (lastnameMom.dirty || lastnameMom.touched)">
+                <div *ngIf="lastnameMom.errors.required">
+                    El apellido es requerido
+                </div>
+            </div>
+
+            <label>Role</label>
+            <select class="form-control" name="idRole" id="idRole" [(ngModel)]="rol.idRole">
+                <option *ngFor="let roles of rolesGenerales" [value]="roles.idRole" >{{"Role: "+ roles.tipoRole}} </option>
+            </select>
+
+            <label>Token</label>
+            <input type="text" class="form-control" id="token" [(ngModel)]="usuario.token" name="token" placeholder="Ingresa un token maximo de 20 caracteres" required minlength="1" maxlength="20" #token="ngModel">
+            <div class="alert alert-danger" *ngIf="token.invalid && (token.dirty || token.touched)">
+                <div *ngIf="token.errors.required">
+                    El token es requerido
+                </div>
+            </div>
+
+        </div>
+        <br>
+        <button class="btn btn-success" [disabled]="!userForm.form.valid">Guardar</button> <button class="btn btn-danger" (click)="redireccionar()" style="margin-left: 10px;">Cancelar</button>
+    </form>
+
+</div>

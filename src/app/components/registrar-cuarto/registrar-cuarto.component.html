@@ -1,0 +1,71 @@
+<div class="col-md-6 offset-md-3 card-header">
+    <h3 class="text-center">Registro de cuarto</h3>
+    <form (ngSubmit)="onSubmitRoom()" #cuartoForm="ngForm">
+        <div class="form-group">
+            <label>Seleccione un Hotel*</label>
+            <select class="form-control" name="hotelList" id="hotelList" [(ngModel)]="hoteles.idHotel">
+                <ng-container *ngFor="let hotel of hotelList"><option *ngIf="hotel.statusHotel == 1" [value]="hotel.idRoom">{{hotel.nameHotel}}</option></ng-container>
+            </select>
+            <label>Nombre del cuarto*</label>
+            <input type="text" class="form-control" id="nameRoom" [(ngModel)] ="cuartos.nameRoom" name="nameRoom"
+            required
+            minlength="1"
+            maxlength="50"
+            #nameRoom="ngModel"
+            >
+            <div class="alert alert-danger" *ngIf="nameRoom.invalid && (nameRoom.dirty || nameRoom.touched)" >
+                <div *ngIf="nameRoom.errors.required">
+                    El nombre del cuarto es requerido
+                </div>
+            </div>
+            <label>Descripción</label>
+            <input type="text" class="form-control" id="description" [(ngModel)]="cuartos.description" name="description"
+            minlength="1"
+            maxlength="100"
+            #description="ngModel"
+            >
+            <div class="alert alert-danger" *ngIf="description.invalid && (description.dirty || description.touched)" >
+                
+            </div>
+            <label>Número de personas*</label>
+            <input type="number" class="form-control" id="noPeople " [(ngModel)]="cuartos.noPeople" name="noPeople"
+            required
+            minlength="1"
+            maxlength="38"
+            #noPeople="ngModel"
+            >
+            <div class="alert alert-danger" *ngIf="noPeople.invalid && (noPeople.dirty || noPeople.touched)" >
+                <div *ngIf="noPeople.errors.required">
+                    El número de personas es requerido
+                </div>
+            </div>
+            <label>Precio*</label>
+            <input type="number" class="form-control" id="price" [(ngModel)]="cuartos.price" name="price"
+            required
+            minlength="1"
+            maxlength="38"
+            #price="ngModel"
+            >
+            <div class="alert alert-danger" *ngIf="price.invalid && (price.dirty || price.touched)" >
+                <div *ngIf="price.errors.required">
+                    El precio es requerido
+                </div>
+            </div>
+            <label>Código de cuarto*</label>
+            <input type="text" class="form-control" id="codeRoom" [(ngModel)]="cuartos.codeRoom" name="codeRoom"
+            required
+            minlength="1"
+            maxlength="20"
+            #codeRoom="ngModel"
+            >
+            <div class="alert alert-danger" *ngIf="codeRoom.invalid && (codeRoom.dirty || codeRoom.touched)" >
+                <div *ngIf="codeRoom.errors.required">
+                    El código es requerido
+                </div>
+            </div>
+        </div>
+        <br>
+        <button class="btn btn-success"[disabled]="!cuartoForm.form.valid">Guardar</button>
+        <button type="button" class="btn btn-danger" onclick="history.back()">Cancelar</button>
+  </form>
+</div>

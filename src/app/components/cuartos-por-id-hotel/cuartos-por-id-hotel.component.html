@@ -1,0 +1,37 @@
+<h2 class="subtitulo">CUARTOS</h2>
+<br>
+<div class="d-grid gap-2 d-md-flex justify-content-md-end">
+    <button class="btn btn-danger" (click)="irAtras()">Cancelar</button>
+</div>
+<br><br>
+<table class="table table-striped">
+    <thead class="table-dark">
+        <tr>
+            <th class="tabla-acciones">NOMBRE</th>
+            <th class="tabla-acciones">DESCRIPCION</th>
+            <th class="tabla-acciones">No. DE PERSONAS</th>
+            <th class="tabla-acciones">PRECIO</th>
+            <th class="tabla-acciones">ESTATUS</th>
+            <th class="tabla-acciones">CODIGO</th>
+            <th class="tabla-acciones">ACCIONES</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let cuarto of cuartos">
+            <td>{{cuarto.nameRoom}}</td>
+            <td>{{cuarto.description}}</td>
+            <td>{{cuarto.noPeople}}</td>
+            <td>{{cuarto.price}}</td>
+            <td *ngIf="cuarto.status==1">HABILITADO</td>
+            <td *ngIf="cuarto.status==0">DESHABILITADO</td>
+            <td>{{cuarto.codeRoom}}</td>
+            <td><button class="btn btn-info" (click)="editarCuarto(cuarto.idRoom)">Modificar</button>
+                <button (click)="eliminarCuarto(cuarto.idRoom)" class="btn btn-danger"
+                    style="margin-left: 10px;">Eliminar</button>
+                <button (click)="editarEstatusCuarto(cuarto.idRoom)" *ngIf="cuarto.status==1" class="btn btn-secondary"
+                    style="margin-left: 10px;">Deshabilitar</button>
+                <button (click)="editarEstatusCuarto(cuarto.idRoom)" *ngIf="cuarto.status==0" class="btn btn-success"
+                    style="margin-left: 10px;">Habilitar</button>
+        </tr>
+    </tbody>
+</table>

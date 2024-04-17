@@ -1,0 +1,33 @@
+<div class="col-md-6 offset-md-3 card-header">
+    <h3 class="text-center">Registro de Permisos</h3>
+    <form (ngSubmit)="onSubmit()" #permisoForm="ngForm">
+        <div class="form-group">
+
+            <label>Permiso</label>
+            <input type="text" class="form-control" id="permisos" [(ngModel)]="permisos.description" name="permisos" placeholder="Ingresa un permiso sin caracteres especiales y maximo 50 caracteres" required minlength="1" maxlength="50" #description="ngModel">
+            <div class="alert alert-danger" *ngIf="description.invalid && (description.dirty || description.touched)">
+                <div *ngIf="description.errors.required">
+                    El permiso es requerido
+                </div>
+            </div>
+
+        </div>
+        <br>
+        <div class="form-group">
+
+            <label>Nodo</label>
+            <input type="text" class="form-control" id="nodo" [(ngModel)]="permisos.nodo" name="nodo" placeholder="Ingresa un nodo con formato x.x.x" required minlength="1" maxlength="5" #nodo="ngModel">
+            <div class="alert alert-danger" *ngIf="nodo.invalid && (nodo.dirty || nodo.touched)">
+                <div *ngIf="nodo.errors.required">
+                    El nodo es requerido
+                </div>
+            </div>
+
+        </div>
+        <br>
+        <button class="btn btn-success" [disabled]="!permisoForm.form.valid">Guardar</button><button class="btn btn-danger" (click)="irAregistroRoles()" style="margin-left: 10px;">Cancelar</button>
+    </form>
+</div>
+<script>
+    console.log(nombre);
+</script>

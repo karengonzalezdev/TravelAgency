@@ -1,0 +1,28 @@
+
+<div class="mat-elevation-z8">
+    <table class="table table-striped">
+        <thead class="table-dark">
+        <tr>
+          <th>ID</th>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Email</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let reservaciones of reservations| paginate: { itemsPerPage: 6, currentPage: p, totalItems: total }">
+            <td>{{ reservaciones.name }}</td>
+            <td>{{ reservaciones.lastNameDad }}</td>
+            <td>{{ reservaciones.lastNameMom}}</td>
+            <td>{{ reservaciones.description }}</td>
+        </tr>
+    </tbody>
+      </table>  
+      
+      <pagination-controls (pageChange)="pageChangeEvent($event)"></pagination-controls>
+  </div>
+  <style>
+    td{
+        color: white;
+    }
+  </style>

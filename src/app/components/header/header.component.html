@@ -1,0 +1,78 @@
+<nav class="navbar navbar-expand-lg fixed-top navbar bg-body-tertiary navbar-dark bg-dark">
+    <div class="container-fluid">
+        <div>
+            <a routerLink="principal" routerLinkActive="active" class="navbar-brand" href="#">
+                <img src="../../../assets/imagenes/logo.avif" alt="Bootstrap" width="50" height="50">
+            </a>
+        </div>
+        <a class="navbar-brand prueba" routerLink="principal" routerLinkActive="active">{{title}}</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+                <li class="nav-item prueba">
+                    <a class="nav-link" routerLink="principal" routerLinkActive="active">INICIO</a>
+                </li>
+                <li class="nav-item dropdown prueba">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              RESERVACIONES
+            </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <li><a routerLink="rervaciones-listar" routerLinkActive="active" class="dropdown-item" href="#">VER RESERVACIONES</a></li>
+                        <li><a routerLink="registrar-reserva" routerLinkActive="active" class="dropdown-item" href="#">AGREGAR RESERVACION</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown prueba">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              AEROLINEA
+            </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <li><a routerLink="aerolineas-listar" routerLinkActive="active" class="dropdown-item" href="#">VER AEROLINEA</a></li>
+                        <li><a routerLink="registrar-aerolinea" routerLinkActive="active" class="dropdown-item" href="#">AGREGAR AEROLINEA</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown prueba">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              VUELOS
+            </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <li><a routerLink="vuelos-listar" routerLinkActive="active" class="dropdown-item" href="#">VER VUELOS</a></li>
+                        <li><a routerLink="registrar-vuelo" routerLinkActive="active" class="dropdown-item" href="#">AGREGAR VUELOS</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown prueba">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              HOTELES
+            </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <li><a routerLink="hoteles-listar" routerLinkActive="active" class="dropdown-item" href="#">HOTELES</a></li>
+                        <li><a routerLink="registrar-hotel" routerLinkActive="active" class="dropdown-item" href="#">AGREGAR HOTEL</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown prueba">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              USUARIOS
+            </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" class="dropdown-item" href="#">USUARIOS</a>
+                            <ul class="dropdown-menu">
+                                <li><a routerLink="" routerLinkActive="active" class="dropdown-item" href="#">Ingresar</a></li>
+                                <li><a routerLink="registro-usuario" routerLinkActive="active" class="dropdown-item" href="#">Registrar</a></li>
+                                <li><a routerLink="consultar-usuario" routerLinkActive="active" class="dropdown-item" href="#">Consultar</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" class="dropdown-item" href="#">ROLES</a>
+                            <ul class="dropdown-menu">
+                                <li><a routerLink="registro-role" routerLinkActive="active" class="dropdown-item" href="#">Registrar</a></li>
+                                <li><a routerLink="consulta-role" routerLinkActive="active" class="dropdown-item" href="#">Consultar</a></li>
+                                <li><a routerLink="consulta-permiso" routerLinkActive="active" class="dropdown-item" href="#">Consultar Permisos</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>

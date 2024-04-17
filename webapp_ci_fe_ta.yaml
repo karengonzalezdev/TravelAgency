@@ -1,0 +1,52 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- develop
+
+jobs:
+
+- job: WebApp
+  pool:
+    vmImage: 'windows-latest'
+
+  variables:
+    buildConfiguration: 'Debug'
+
+  steps:
+  - task: NodeTool@0
+    displayName: "Installing Node 18.x"
+    inputs:
+      versionSource: 'spec'
+      versionSpec: '18.x'
+      checkLatest: true
+
+  - task: Npm@1
+    displayName: "Installing Angular cli"
+    inputs:
+      command: "custom"
+      customCommand: "install -g @angular/cli"
+
+  - task: Npm@1
+    displayName: "Installing npm dependencies"
+    inputs:
+      command: 'custom'
+      customCommand: 'install'
+      verbose: true
+
+  - task: CmdLine@2
+    displayName: "Validating tools version"
+    inputs:
+      script: 'ng version'
+
+  - task: CmdLine@2
+    displayName: "Building Angular app"
+    inputs:
+      script: 'ng build'
+
+  - task: CmdLine@2
+    displayName: "Running unit tests"
+    inputs:
+      script: 'ng test --browsers=ChromeHeadless --watch=false --code-coverage'

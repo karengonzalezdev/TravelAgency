@@ -1,0 +1,53 @@
+<h2 class="subtitulo">CIUDADES</h2>
+<div class="container-fluid">
+    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+        <a class="btn btn-primary" (click)="redireccionar()" role="button">NUEVA CIUDAD</a>
+    </div><br>
+    <form class="d-flex" role="search">
+        <input #BuscarCampo id="BuscarCampo" name="BuscarCampo" class="inputBuscar" placeholder="Ingresa ciudad o continente">
+        <button class="btn btn-primary tamañoBoton" (click)="buscar(BuscarCampo.value)">Buscar</button>
+    </form> 
+  </div>
+
+<br>
+<table class="table table-striped">
+    <thead class="table-dark">
+        <tr>
+            <th>NOMBRE</th>
+            <th>CONTINENTE</th>
+            <th>ACCIONES</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let ciudad of ciudades">
+            <td>{{ciudad.name}}</td>
+            <td>{{ciudad.continen_name}}</td>
+            <td><button class="btn btn-warning" (click)="actualizar(ciudad.idCity)">Modificar</button><button (click)="eliminarAerolinea(ciudad.idCity)" class="btn btn-danger" style="margin-left: 10px;">Eliminar</button>
+    
+        </tr>
+    </tbody>
+</table>
+
+<style>
+    h2{
+        text-align: center;
+        margin-top: 20px;
+        text-shadow: 2px 0px 10px brown;
+    }
+    td{
+        color: white;
+    }
+    .tamañoBoton{
+        
+        margin-bottom: 5px;
+        text-align: center;
+        margin-left: 10px;
+    }
+    #BuscarCampo{
+        width: 25%;
+    }
+    .botonPorCampo{
+        margin-left: 45%;
+        margin-top: 10px;
+    }
+</style>

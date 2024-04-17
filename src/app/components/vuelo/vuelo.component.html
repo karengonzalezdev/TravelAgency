@@ -1,0 +1,56 @@
+<h2 class="subtitulo">VUELOS</h2>
+<div class="container-fluid">
+    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+        <a class="btn btn-primary" (click)="redireccionarRegistro()" role="button">NUEVO VUELO</a>
+        <a class="btn btn-info" (click)="redireccionarCiudades()" role="button">CIUDADES</a>
+    </div><br>
+    <form class="d-flex" role="search">
+        <input #BuscarCampo id="BuscarCampo" name="BuscarCampo" class="inputBuscar" placeholder="Ingresa origen, destino o aerolínea">
+        <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+
+            <div class="btn-group" role="group">
+                <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                Buscar por
+              </button>
+                <ul class="dropdown-menu">
+                    <li><a (click)="buscarOrigen(BuscarCampo.value)" class="dropdown-item">Origen</a></li>
+                    <li><a (click)="buscarDestino(BuscarCampo.value)" class="dropdown-item">Destino</a></li>
+                    <li><a (click)="buscarAerolinea(BuscarCampo.value)" class="dropdown-item">Aerolínea</a></li>
+                </ul>
+            </div>
+        </div>
+    </form>
+</div>
+<br>
+<br>
+<table class="table table-striped">
+    <thead class="table-dark">
+        <tr>
+            <th class="tabla-acciones">ORIGEN</th>
+            <th class="tabla-acciones">DESTINO</th>
+            <th class="tabla-acciones">AEROLÍNEA</th>
+            <th class="tabla-acciones">ESTATUS</th>
+            <th class="tabla-acciones">FECHA Y HORA DE SALIDA</th>
+            <th class="tabla-acciones">FECHA Y HORA DE LLEGADA</th>
+            <th class="tabla-acciones">CÓDIGO DE VUELO</th>
+            <th class="tabla-acciones">ACCIONES</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        <tr *ngFor="let vuelo of vuelos | paginate: { itemsPerPage: 6, currentPage: p, totalItems: total }">
+            <td>{{vuelo.fkIdCitieOrigin.name}}</td>
+            <td>{{vuelo.fkIdCitieDestination.name}}</td>
+            <td>{{vuelo.fkIdAirline.name}}</td>
+            <td *ngIf="vuelo.status==1">HABILITADO</td>
+            <td *ngIf="vuelo.status==0">DESHABILITADO</td>
+            <td>{{ vuelo.departureTime | date: 'short'}}</td>
+            <td>{{ vuelo.arrivalTime | date: 'short'}}</td>
+            <td>{{vuelo.code}}</td>
+            <td><button class="btn btn-info" (click)="actualizar(vuelo.idFlight)">Modificar</button><button (click)="eliminarVuelo(vuelo.idFlight)" class="btn btn-danger" style="margin-left: 10px;">Eliminar</button>
+                <button (click)="status(vuelo.idFlight)" *ngIf="vuelo.status==1" class="btn btn-secondary" style="margin-left: 10px;">Deshabilitar</button>
+                <button (click)="status(vuelo.idFlight)" *ngIf="vuelo.status==0" class="btn btn-success" style="margin-left: 10px;">Habilitar</button>
+        </tr>
+    </tbody>
+</table>
+<pagination-controls (pageChange)="pageChangeEvent($event)"></pagination-controls>

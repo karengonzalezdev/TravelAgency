@@ -1,0 +1,25 @@
+<div class="col-md-6 offset-md-3 card-header">
+    <h3 class="text-center">Edicion de Roles</h3>
+    <form (ngSubmit)="onSubmit()" #rolForm="ngForm">
+        <div class="form-group">
+
+            <label>Role</label>
+            <input type="text" class="form-control" id="role" [(ngModel)]="role.tipoRole" name="role" placeholder="Ingresa un role sin caracteres especiales y maximo 20 caracteres" required minlength="1" maxlength="20" #tipoRole="ngModel">
+            <div class="alert alert-danger" *ngIf="tipoRole.invalid && (tipoRole.dirty || tipoRole.touched)">
+                <div *ngIf="tipoRole.errors.required">
+                    El role es requerido
+                </div>
+            </div>
+
+            <label>Seleccione Permiso</label>
+            <select class="form-control" name="permiso" id="permiso" [(ngModel)]="variablePermiso.idPermission">
+                <option *ngFor="let permisos of permisoGeneral" [value]="permisos.idPermission">{{permisos.description}}</option>
+            </select>
+        </div>
+        <br>
+        <button class="btn btn-success" [disabled]="!rolForm.form.valid">Guardar</button> <button class="btn btn-danger" (click)="irALista()" style="margin-left: 10px;">Cancelar</button>
+    </form>
+</div>
+<script>
+    console.log(nombre);
+</script>

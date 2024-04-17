@@ -1,0 +1,25 @@
+<h2 class="subtitulo">ROLES</h2>
+<br>
+<br>
+<table class="table table-striped">
+    <thead class="table-dark">
+        <tr>
+            <th scope="col">#</th>
+            <th>Role</th>
+            <th>Permiso</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let roles of roleper | paginate: { itemsPerPage: 6, currentPage: p, totalItems: total }">
+            <td>{{roles.idRolePerm}}</td>
+            <td>{{roles.roleDTO.tipoRole}}</td>
+            <td>{{roles.permissionDTO.description}}</td>
+            <td><button (click)="actualizaRole(roles.roleDTO.idRole, roles.idRolePerm)" class="btn btn-info">Modificar</button><button (click)="eliminarGeneral(roles.roleDTO.idRole, roles.idRolePerm)" class="btn btn-danger" style="margin-left: 10px;">Eliminar</button></td>
+        </tr>
+    </tbody>
+</table>
+<pagination-controls (pageChange)="pageChangeEvent($event)"></pagination-controls>
+<script>
+    console.log(nombre);
+</script>

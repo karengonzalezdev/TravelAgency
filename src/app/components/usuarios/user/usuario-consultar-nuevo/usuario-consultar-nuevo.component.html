@@ -1,0 +1,38 @@
+<h2 class="subtitulo">Usuarios</h2>
+<br>
+<table class="table table-striped">
+    <thead class="table-dark">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Apellido Paterno</th>
+            <th scope="col">Apellido Materno</th>
+            <th scope="col">Rol</th>
+            <th scope="col">Token</th>
+            <th scope="col">Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let user of usuario | paginate: { itemsPerPage: 6, currentPage: p, totalItems: total }">
+            <td>{{user.idUser}}</td>
+            <td>{{user.name}}</td>
+            <td>{{user.lastnameDad}}</td>
+            <td>{{user.lastnameMom}}</td>
+            <td>{{user.rolDto.tipoRole}}</td>
+            <td>{{user.token}}</td>
+            <td><button class="btn btn-info" (click)="actualizar(user.idUser)">Modificar</button><button (click)="eliminarUsuario(user.idUser)" class="btn btn-danger" style="margin-left: 10px;">Eliminar</button></td>
+        </tr>
+        <!-- <tr>
+            <td><i class="fa-solid fa-angles-left" (click)="rewind()"></i></td>
+            <td colspan="2">
+                <span *ngFor="let p of totalPages; let i = index">
+                    <a style="cursor: pointer;" (click)="setPage(i)"
+                    [ngClass]="{'text-primary': i === page }">{{ i+1 }}&nbsp;&nbsp;&nbsp;</a>
+                  </span>
+            </td>
+            <td><i class="fas fa-angle-double-right fa-2x" (click)="forward()"></i></td>
+        </tr>-->
+    </tbody>
+</table>
+
+<pagination-controls (pageChange)="pageChangeEvent($event)"></pagination-controls>

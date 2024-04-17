@@ -1,0 +1,55 @@
+<h2 class="subtitulo">HOTELES</h2>
+<form class="d-flex" role="search">
+    <input #BuscarCampo id="BuscarCampo" name="BuscarCampo" class="inputBuscar"
+        placeholder="Buscar hotel por nombre/codigo/ciudad">
+    <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+
+        <div class="btn-group" role="group">
+            <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                Buscar por
+            </button>
+            <ul class="dropdown-menu">
+                <li><a (click)="buscarNameHotel(BuscarCampo.value)" class="dropdown-item">Nombre</a></li>
+                <li><a (click)="buscarCodeHotel(BuscarCampo.value)" class="dropdown-item">Codigo</a></li>
+                <li><a (click)="buscarCity(BuscarCampo.value)" class="dropdown-item">Ciudad</a></li>
+            </ul>
+        </div>
+    </div>
+</form>
+<br>
+<br>
+<table class="table table-striped">
+    <thead class="table-dark">
+        <tr>
+            <th class="tabla-acciones">NOMBRE</th>
+            <th class="tabla-acciones">CIUDAD</th>
+            <th class="tabla-acciones">DIRECCION</th>
+            <th class="tabla-acciones">LOGO</th>
+            <th class="tabla-acciones">ESTATUS</th>
+            <th class="tabla-acciones">CODIGO</th>
+            <th class="tabla-acciones">ACCIONES</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let hotel of hoteles | paginate: { itemsPerPage: 6, currentPage: p, totalItems: total }">
+            <td>{{hotel.nameHotel}}</td>
+            <td>{{hotel.cityDestination.name}}</td>
+            <td>{{hotel.addressHotel}}</td>
+            <td><img src="{{'data:image/jpg;base64,' + hotel.logo}}"></td>
+            <td *ngIf="hotel.statusHotel==1">HABILITADO</td>
+            <td *ngIf="hotel.statusHotel==0">DESHABILITADO</td>
+            <td>{{hotel.codeHotel}}</td>
+            <td><button class="btn btn-info" (click)="actualizar(hotel.idHotel)">Modificar</button>
+                <button (click)="eliminarHotel(hotel.idHotel)" class="btn btn-danger"
+                    style="margin-left: 10px;">Eliminar</button>
+                <button (click)="editarEstatus(hotel.idHotel)" *ngIf="hotel.statusHotel==1" class="btn btn-secondary"
+                    style="margin-left: 10px;">Deshabilitar</button>
+                <button (click)="editarEstatus(hotel.idHotel)" *ngIf="hotel.statusHotel==0" class="btn btn-success"
+                    style="margin-left: 10px;">Habilitar</button>
+                <button class="btn btn-warning" (click)="crearCuarto(hotel.idHotel)" style="margin-left: 10px;">Agregar
+                    Cuarto</button>
+        </tr>
+    </tbody>
+</table>
+<pagination-controls (pageChange)="pageChangeEvent($event)"></pagination-controls>

@@ -1,0 +1,32 @@
+<h2 class="subtitulo">
+    VUELOS</h2>
+<table class="table table-striped">
+    <thead class="table-dark">
+        <tr>
+            <th>ORIGEN</th>
+            <th>DESTINO</th>
+            <th>AEROLÍNEA</th>
+            <th>ESTATUS</th>
+            <th>HORA DE SALIDA</th>
+            <th>HORA DE LLEGADA</th>
+            <th>CÓDIGO DE VUELO</th>
+            <th>ACCIONES</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        <tr *ngFor="let vuelo of arrayData">
+            <td>{{vuelo.fkIdCitieOrigin.name}}</td>
+            <td>{{vuelo.fkIdCitieDestination.name}}</td>
+            <td>{{vuelo.fkIdAirline.name}}</td>
+            <td *ngIf="vuelo.status==1">ACTIVO</td>
+            <td *ngIf="vuelo.status==0">INACTIVO</td>
+            <td>{{vuelo.departureTime}}</td>
+            <td>{{vuelo.arrivalTime}}</td>
+            <td>{{vuelo.code}}</td>
+            <td><button class="btn btn-info">Actualizar</button><button (click)="eliminarVuelo(vuelo.idFlight)" class="btn btn-warning" style="margin-left: 10px;">Eliminar</button>
+
+        </tr>
+
+    </tbody>
+</table>

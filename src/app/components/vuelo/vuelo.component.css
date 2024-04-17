@@ -1,0 +1,39 @@
+h2 {
+    text-align: center;
+    margin-top: 20px;
+    text-shadow: 2px 0px 10px brown;
+}
+
+td {
+    color: white;
+}
+
+.tamañoBoton {
+    margin-bottom: 5px;
+    text-align: center;
+    margin-left: 10px;
+}
+
+#BuscarCampo {
+    width: 25%;
+}
+
+.botonPorCampo {
+    margin-left: 45%;
+    margin-top: 10px;
+}
+
+#miTablaPersonalizada th {
+    width: 50;
+    height: 50;
+    overflow: auto;
+    border: 1px solid;
+}
+
+table {
+    table-layout: fixed;
+}
+
+.tabla-acciones {
+    width: 50px;
+}

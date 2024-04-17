@@ -1,0 +1,31 @@
+<h2 class="subtitulo"> AEROLÍNEAS</h2>
+
+<div class="container-fluid">
+    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+        <a class="btn btn-primary" (click)="redireccionar()" role="button">NUEVA AEROLÍNEA</a>
+    </div><br>
+
+
+    <input #BuscarCampo id="BuscarCampo" name="BuscarCampo" class="inputBuscar" placeholder="Ingresa aerolinea">
+    <button class="btn btn-primary tamañoBoton" (click)="buscar(BuscarCampo.value)">Buscar</button>
+
+</div>
+
+<br>
+<table class="table table-striped">
+    <thead class="table-dark">
+        <tr>
+            <th>NOMBRE</th>
+            <th>ACCIONES</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        <tr *ngFor="let aerolinea of aerolineas | paginate: { itemsPerPage: 6, currentPage: p, totalItems: total }">
+            <td>{{aerolinea.name}}</td>
+            <td><button (click)="actualizar(aerolinea.idAirline)" class="btn btn-info">Modificar</button><button (click)="eliminarAerolinea(aerolinea.idAirline)" class="btn btn-danger" style="margin-left: 10px;">Eliminar</button>
+
+        </tr>
+    </tbody>
+</table>
+<pagination-controls (pageChange)="pageChangeEvent($event)"></pagination-controls>

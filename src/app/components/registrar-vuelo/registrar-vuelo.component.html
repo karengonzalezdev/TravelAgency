@@ -1,0 +1,46 @@
+<div class="col-md-6 offset-md-3 card-header">
+    <h3 class="text-center">Registro de vuelo</h3>
+    <form (ngSubmit)="onSubmit()" #vueloForm="ngForm">
+        <div class="form-group">
+            <label>Seleccione Ciudad de Origen</label>
+            <select class="form-control" name="ciudadOrigen" id="ciudadOrigen" [(ngModel)]="ciudadO.idCity">
+                <option *ngFor="let ciudad of ciudades" [value]="ciudad.idCity" >{{ ciudad.name}}</option>
+            </select>
+
+            <label>Seleccione Ciudad de Destino</label>
+            <select class="form-control" name="ciudadDestino" id="ciudadDestino" [(ngModel)]="ciudadD.idCity">
+                <option *ngFor="let ciudad of ciudades" [value]="ciudad.idCity" >{{ ciudad.name}}</option>
+            </select>
+
+            <label>Seleccione Aerolínea</label>
+            <select class="form-control" name="vuelo" id="vuelo" [(ngModel)]="aerolinea.idAirline">
+                <option *ngFor="let aerolinea of aerolineas" [value]="aerolinea.idAirline" >{{aerolinea.name}}</option>
+            </select>
+
+            <label>Código</label>
+            <input type="text" class="form-control" id="code" [(ngModel)]="vuelo.code" name="code" placeholder="Ingresa un codigo maximo 20 caracteres " required minlength="1" maxlength="20" #code="ngModel">
+            <div class="alert alert-danger" *ngIf="code.invalid && (code.dirty || code.touched)">
+                <div *ngIf="code.errors.required">
+                    El codigo es necesario
+                </div>
+            </div>
+
+            <label>Fecha y Hora de Salida</label>
+            <input type="datetime-local" class="form-control" id="idUser" [(ngModel)]="vuelo.departureTime" name="idUser" [min]="date|date:'yyyy-MM-dd hh:mm'" required>
+            <label>Fecha y Hora de llegada</label>
+            <input type="datetime-local" class="form-control" id="name" [(ngModel)]="vuelo.arrivalTime" name="name" [min]="date|date:'yyyy-MM-dd hh:mm'" required>
+
+            <label>Costo</label>
+            <input type="text" class="form-control" id="cost" [(ngModel)]="vuelo.cost" name="cost" placeholder="Ingresa un costo maximo 12 caracteres" required minlength="1" maxlength="12" #cost="ngModel">
+            <div class="alert alert-danger" *ngIf="cost.invalid && (cost.dirty || cost.touched)">
+                <div *ngIf="cost.errors.required">
+                    El costo es necesario
+                </div>
+            </div>
+
+        </div>
+        <br>
+        <button class="btn btn-success" [disabled]="!vueloForm.form.valid">Guardar</button>
+        <button class="btn btn-danger" (click)="irAlistaVuelos()" style="margin-left: 10px;">Cancelar</button>
+    </form>
+</div>

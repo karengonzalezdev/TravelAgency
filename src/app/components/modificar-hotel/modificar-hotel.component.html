@@ -1,0 +1,51 @@
+<div class="col-md-6 offset-md-3 card-header">
+    <h3 class="text-center">ACTUALIZACIÓN DE HOTEL</h3>
+    <form (ngSubmit)="onSubmit()" #hotelForm="ngForm">
+        <div class="form-group">
+            <label>Nombre del Hotel*</label>
+            <input type="text" class="form-control" id="nameHotel" [(ngModel)]="hotel2.nameHotel" name="nameHotel"
+                required minlength="1" maxlength="50" #nameHotel="ngModel">
+            <div class="alert alert-danger" *ngIf="nameHotel.invalid && (nameHotel.dirty || nameHotel.touched)">
+                <div *ngIf="nameHotel.errors.required">
+                    El nombre del hotel es requerido
+                </div>
+            </div>
+            <label>Seleccione ciudad*</label>
+            <select class="form-control" name="city" id="city" [(ngModel)]="ciudadD.idCity">
+                <option *ngFor="let ciudad of ciudades" [value]="ciudad.idCity">{{ ciudad.name}}</option>
+            </select>
+            <label>Dirección*</label>
+            <input type="text" class="form-control" id="addressHotel" [(ngModel)]="hotel2.addressHotel"
+                name="addressHotel" required minlength="1" maxlength="50" #addressHotel="ngModel">
+            <div class="alert alert-danger"
+                *ngIf="addressHotel.invalid && (addressHotel.dirty || addressHotel.touched)">
+                <div *ngIf="addressHotel.errors.required">
+                    La dirección es requerida
+                </div>
+            </div>
+            <label>Logo*</label>
+            <br>
+            <img src="{{ imgURL64 }}" #urlBase64 width="80px" height="80px"> <img [src]="imgURL"
+                style="margin-left: 10px;" height="80" width="80" *ngIf="imgURL">
+            <br><br>
+            <input class="form-control" (change)="capturaImagen($event)" id="urlimg"
+                accept="image/x-png, image/gif, image/jpeg" type="file" required>
+            <br>
+            <br>
+            <label>Código*</label>
+            <input type="text" class="form-control" id="codeHotel" [(ngModel)]="hotel2.codeHotel" name="codeHotel"
+                required>
+        </div>
+        <br>
+        <button class="btn btn-success">Guardar</button>
+        <button type="button" class="btn btn-danger" (click)="listaGeneral()">Cancelar</button>
+        <br>
+        <br>
+        <label>Cuartos existentes</label>
+        <br>
+        <button class="btn btn-info" (click)="cuartosPorIdHotel(hotel2.idHotel)">Ver cuartos</button>
+        <br>
+        <br>
+        <button class="btn btn-info" (click)="crearCuarto(hotel2.idHotel)">Agregar Cuarto</button>
+    </form>
+</div>

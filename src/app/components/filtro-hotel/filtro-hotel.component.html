@@ -1,0 +1,31 @@
+<table class="table table-striped">
+    <thead class="table-dark">
+        <tr>
+            <th>Nombre del hotel</th>
+            <th>Ciudad</th>
+            <th>Direccion</th>
+            <th>Logo</th>
+            <th>Estatus</th>
+            <th>Codigo</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let hotel of hoteles">
+            <td>{{hotel.nameHotel}}</td>
+            <td>{{hotel.cityDestination.name}}</td>
+            <td>{{hotel.addressHotel}}</td>
+            <td><img height="80" width="80" src="'data:image/jpeg;base64,'+ {{hotel.logo}}" /></td>
+            <td *ngIf="hotel.statusHotel==1">HABILITADO</td>
+            <td *ngIf="hotel.statusHotel==0">DESHABILITADO</td>
+            <td>{{hotel.codeHotel}}</td>
+            <td><button (click)="editarHotel()" class="btn btn-info">Modificar</button>
+                <button (click)="eliminarHotel(hotel.idHotel)" class="btn btn-warning"
+                    style="margin-left: 10px;">Eliminar</button>
+                <button (click)="editarEstatus(hotel.idHotel)" *ngIf="hotel.statusHotel==1" class="btn btn-secondary"
+                    style="margin-left: 10px;">Deshabilitar</button>
+                <button (click)="editarEstatus(hotel.idHotel)" *ngIf="hotel.statusHotel==0" class="btn btn-success"
+                    style="margin-left: 10px;">Habilitar</button>
+        </tr>
+    </tbody>
+</table>
