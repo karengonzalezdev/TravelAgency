@@ -53,7 +53,7 @@
     padding-top: 33rem;
     padding-bottom: 6rem;
     color: rgb(245, 239, 239);
-    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../assets/imagenes/avion.webp");
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("assets/imagenes/avion.webp");
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center;
