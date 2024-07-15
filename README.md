@@ -4,10 +4,10 @@
 
 ⭐ See Demo ⭐ 
 
-&nbsp;&nbsp;&nbsp;[Travel Agency](https://karenfggutierrez.github.io/TravelAgency/#/principal)
+&nbsp;&nbsp; [Travel Agency](https://karengonzalezdev.github.io/TravelAgency/)
 
 <br/>
 
-![principalTravelAgency](https://github.com/karenfggutierrez/TravelAgency/assets/69605681/3b2fde26-7583-4c3e-b6ec-dc953377ecd5)
+![principalTravelAgency](https://github.com/karengonzalezdev/TravelAgency/assets/69605681/3b2fde26-7583-4c3e-b6ec-dc953377ecd5)
 
 <br/>
